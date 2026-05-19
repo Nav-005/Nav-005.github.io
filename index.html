@@ -162,10 +162,11 @@
       background: var(--dark);
       color: #fff;
       border-radius: 16px;
-      padding: 2.5rem;
-      width: 320px;
+      padding: 0;
+      width: min(380px, 100%);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 18px 50px rgba(26,26,46,0.18);
     }
     .hero-card::before {
       content: '';
@@ -175,23 +176,110 @@
       background: radial-gradient(circle, rgba(230,57,70,0.3), transparent 70%);
       border-radius: 50%;
     }
-    .hero-card-tag {
+    .terminal-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      background: rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 1;
+    }
+    .terminal-dots { display: flex; gap: 0.4rem; }
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .terminal-dot:nth-child(2) { background: var(--gold); }
+    .terminal-dot:nth-child(3) { background: #2a9d8f; }
+    .terminal-title {
+      color: rgba(255,255,255,0.48);
       font-size: 0.72rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.8rem;
     }
-    .hero-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+    .terminal-body {
+      padding: 1.45rem;
+      position: relative;
+      z-index: 1;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.82rem;
+      line-height: 1.8;
     }
-    .hero-card p { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 1.6rem; }
-    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .stat { background: rgba(255,255,255,0.07); border-radius: 10px; padding: 1rem; text-align: center; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); }
-    .stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .terminal-line {
+      color: rgba(255,255,255,0.74);
+      width: 0;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typeLine 0.7s steps(34, end) forwards;
+    }
+    .terminal-line:nth-of-type(1) { animation-delay: 0.3s; }
+    .terminal-line:nth-of-type(2) { animation-delay: 1.05s; }
+    .terminal-line:nth-of-type(3) { animation-delay: 1.45s; }
+    .terminal-line:nth-of-type(4) { animation-delay: 2.25s; }
+    .terminal-line:nth-of-type(5) { animation-delay: 2.8s; }
+    .terminal-line:nth-of-type(6) { animation-delay: 3.35s; }
+    .terminal-line:nth-of-type(7) { animation-delay: 4s; }
+    .terminal-line:nth-of-type(8) { animation-delay: 4.55s; }
+    .terminal-line:nth-of-type(9) { animation-delay: 5.15s; }
+    .terminal-line:nth-of-type(9)::after {
+      content: '';
+      display: inline-block;
+      width: 0.55em;
+      height: 1.15em;
+      margin-left: 0.2rem;
+      background: var(--gold);
+      vertical-align: -0.18em;
+      animation: blinkCursor 0.9s step-end infinite;
+    }
+    .terminal-prompt { color: var(--gold); }
+    .terminal-key { color: #8ecae6; }
+    .terminal-string { color: #f4a261; }
+    .terminal-method { color: #f7ede2; }
+    .terminal-output {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 1.1rem;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: showOutput 0.5s 5.9s ease forwards;
+    }
+    .terminal-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 0.75rem 0.85rem;
+      color: rgba(255,255,255,0.78);
+    }
+    .terminal-pill strong {
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+    .terminal-pill span {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.72rem;
+      text-align: right;
+    }
+    @keyframes typeLine {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blinkCursor {
+      50% { opacity: 0; }
+    }
+    @keyframes showOutput {
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     /* ─── SECTIONS SHARED ─── */
     section:not(#home) { padding: 6rem 5%; }
@@ -509,6 +597,16 @@
       .demo-gallery { grid-template-columns: 1fr; }
       .demo-shot.large, .demo-shot.small { min-height: 180px; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      .terminal-line,
+      .terminal-output {
+        width: 100%;
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+      .terminal-line:nth-of-type(9)::after { animation: none; }
+    }
   </style>
 </head>
 <body>
@@ -538,25 +636,28 @@
   </div>
   <div class="hero-visual">
     <div class="hero-card">
-      <p class="hero-card-tag">Quick Facts</p>
-      <h3>Navneet Kaur</h3>
-      <p>Stockholm, Sweden · KTH · 2024–Present</p>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Languages</div>
+      <div class="terminal-topbar">
+        <div class="terminal-dots" aria-hidden="true">
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
         </div>
-        <div class="stat">
-          <div class="stat-num">3+</div>
-          <div class="stat-label">Project Areas</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">EQF 7</div>
-          <div class="stat-label">Degree Level</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">C2</div>
-          <div class="stat-label">English Level</div>
+        <span class="terminal-title">portfolio.js</span>
+      </div>
+      <div class="terminal-body" aria-label="Code-style project summary">
+        <p class="terminal-line"><span class="terminal-prompt">$</span> Navneet.build()</p>
+        <p class="terminal-line">{</p>
+        <p class="terminal-line">&nbsp;&nbsp;<span class="terminal-key">focus</span>: <span class="terminal-string">"software + hardware"</span>,</p>
+        <p class="terminal-line">&nbsp;&nbsp;<span class="terminal-key">tools</span>: [</p>
+        <p class="terminal-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="terminal-string">"Java"</span>, <span class="terminal-string">"Python"</span>, <span class="terminal-string">"SQL"</span>, <span class="terminal-string">"C"</span></p>
+        <p class="terminal-line">&nbsp;&nbsp;],</p>
+        <p class="terminal-line">&nbsp;&nbsp;<span class="terminal-key">method</span>: <span class="terminal-method">prototype → test → refine</span></p>
+        <p class="terminal-line">}</p>
+        <p class="terminal-line"><span class="terminal-prompt">✓</span> ready for projects</p>
+        <div class="terminal-output">
+          <div class="terminal-pill"><strong>Software Projects</strong><span>apps, data, web</span></div>
+          <div class="terminal-pill"><strong>Hardware Demos</strong><span>builds, sensors, prototypes</span></div>
+          <div class="terminal-pill"><strong>Currently Learning</strong><span>KTH · MSc</span></div>
         </div>
       </div>
     </div>
