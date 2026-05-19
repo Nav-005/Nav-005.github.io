@@ -464,13 +464,45 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
+      width: fit-content;
+      background: var(--dark);
+      color: #fff;
+      padding: 0.62rem 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      margin-top: 0.35rem;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 20px rgba(26,26,46,0.12);
+    }
+    .project-link:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(230,57,70,0.22);
+    }
+    .project-link::after {
+      content: '↗';
+      font-size: 0.85rem;
+      line-height: 1;
+    }
+    .description-link,
+    .decription-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
       color: var(--accent);
       font-weight: 500;
       font-size: 0.9rem;
       text-decoration: none;
-      margin-top: 0.2rem;
+      margin: 0.2rem 0.9rem 0.2rem 0;
+      transition: color 0.2s;
     }
-    .project-link:hover { color: var(--dark); }
+    .description-link:hover,
+    .decription-link:hover {
+      color: var(--dark);
+    }
     .demo-gallery {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -789,7 +821,7 @@ Developed features including injury risk visualization, player/team dashboards, 
       </div>
       <!-- Replace this URL with the deployed product website when available. -->
       <a class="decription-link" href="https://gunnarsby.github.io" target="_blank" rel="noopener">Open project description →</a>
-      <a class="project-link" href="https://www.2to3weeks.com" target="_blank" rel="noopener">Open project page →</a>
+      <a class="project-link" href="https://www.2to3weeks.com" target="_blank" rel="noopener">Launch demo</a>
     </article>
     
     <article class="project-card fade-in">
