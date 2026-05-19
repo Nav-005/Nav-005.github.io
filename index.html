@@ -605,8 +605,12 @@
       background: var(--accent);
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
       flex-shrink: 0;
+    }
+    .contact-item-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
     }
     .contact-item-label { font-size: 0.72rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.06em; }
     .contact-item-value { font-size: 0.95rem; color: #fff; }
@@ -882,19 +886,27 @@
       <p class="contact-intro">I'm currently open to internships, part-time roles, and exciting projects. Whether you have an opportunity or just want to connect — feel free to reach out!</p>
       <div class="contact-items">
         <a class="contact-item" href="mailto:navneetkaur9105@gmail.com">
-          <div class="contact-item-icon">✉️</div>
-          <div><div class="contact-item-label">Email</div><div class="contact-item-value">navneetkaur9105@gmail.com</div></div>
-        </a>
-        <a class="contact-item" href="tel:+46764343211">
-          <div class="contact-item-icon">📱</div>
-          <div><div class="contact-item-label">Phone</div><div class="contact-item-value">+46 764 343 211</div></div>
+          <div class="contact-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" aria-label="Gmail logo">
+              <path d="M3.5 6.2A2.2 2.2 0 0 1 5.7 4h12.6a2.2 2.2 0 0 1 2.2 2.2v11.6a2.2 2.2 0 0 1-2.2 2.2H5.7a2.2 2.2 0 0 1-2.2-2.2V6.2zm2.2-.1v2.2L12 13l6.3-4.7V6.1L12 10.8 5.7 6.1zm0 4.7v7h12.6v-7L12 15.5l-6.3-4.7z"></path>
+            </svg>
+          </div>
+          <div><div class="contact-item-label">Gmail</div><div class="contact-item-value">navneetkaur9105@gmail.com</div></div>
         </a>
         <a class="contact-item" href="https://www.linkedin.com/in/navneetkaur9105/" target="_blank">
-          <div class="contact-item-icon">💼</div>
+          <div class="contact-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" aria-label="LinkedIn logo">
+              <path d="M5.1 8.9h3.3V19H5.1V8.9zM6.8 4a1.9 1.9 0 1 1 0 3.8A1.9 1.9 0 0 1 6.8 4zm3.5 4.9h3.2v1.4h.1c.4-.8 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5V19h-3.3v-4.8c0-1.1 0-2.6-1.6-2.6s-1.8 1.2-1.8 2.5V19h-3.3V8.9z"></path>
+            </svg>
+          </div>
           <div><div class="contact-item-label">LinkedIn</div><div class="contact-item-value">navneetkaur9105</div></div>
         </a>
         <a class="contact-item" href="https://github.com/Nav-005" target="_blank">
-          <div class="contact-item-icon">🐙</div>
+          <div class="contact-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" aria-label="GitHub logo">
+              <path d="M12 2.4a9.6 9.6 0 0 0-3 18.7c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.5-1.1-4.5-4.8 0-1.1.4-1.9 1-2.6-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.2 9.2 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.5 1 2.6 0 3.7-2.3 4.5-4.5 4.8.4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A9.6 9.6 0 0 0 12 2.4z"></path>
+            </svg>
+          </div>
           <div><div class="contact-item-label">GitHub</div><div class="contact-item-value">Nav-005</div></div>
         </a>
       </div>
