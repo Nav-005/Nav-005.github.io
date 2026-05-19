@@ -446,43 +446,6 @@
     .skill-name { font-size: 0.95rem; font-weight: 500; color: var(--dark); }
     .skill-category { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
 
-    /* ─── EDUCATION ─── */
-    #education { background: var(--cream); }
-    .edu-card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 2.5rem;
-      max-width: 700px;
-      border: 1px solid rgba(26,26,46,0.07);
-      box-shadow: 0 2px 20px rgba(26,26,46,0.06);
-      position: relative;
-      overflow: hidden;
-    }
-    .edu-card::before {
-      content: 'KTH';
-      font-family: 'Playfair Display', serif;
-      font-size: 7rem;
-      font-weight: 700;
-      color: rgba(230,57,70,0.04);
-      position: absolute;
-      right: 1rem; top: 0.5rem;
-      line-height: 1;
-      pointer-events: none;
-    }
-    .edu-period { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin-bottom: 0.5rem; }
-    .edu-degree { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--dark); margin-bottom: 0.3rem; }
-    .edu-school { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
-    .edu-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-    .edu-tag {
-      background: rgba(230,57,70,0.07);
-      color: var(--accent);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border: 1px solid rgba(230,57,70,0.15);
-    }
-
     /* ─── CONTACT ─── */
     #contact { background: var(--dark); color: #fff; }
     #contact .section-title { color: #fff; }
@@ -556,7 +519,6 @@
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -745,29 +707,6 @@
     <div class="skill-card fade-in"><div class="skill-icon">🤝</div><div class="skill-name">Customer Service</div><div class="skill-category">Soft Skills</div></div>
     <div class="skill-card fade-in"><div class="skill-icon">🧩</div><div class="skill-name">Problem Solving</div><div class="skill-category">Soft Skills</div></div>
     <div class="skill-card fade-in"><div class="skill-icon">🔄</div><div class="skill-name">Adaptability</div><div class="skill-category">Soft Skills</div></div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-  <div class="section-label fade-in">Academic Background</div>
-  <h2 class="section-title fade-in">Education</h2>
-  <div class="section-line"></div>
-  <div class="edu-card fade-in">
-    <div class="edu-period">Aug 2024 – Present</div>
-    <div class="edu-degree">MSc Computer & Information Science</div>
-    <div class="edu-school">KTH Royal Institute of Technology · Stockholm, Sweden · EQF Level 7</div>
-    <div class="edu-tags">
-      <span class="edu-tag">Java</span>
-      <span class="edu-tag">Python</span>
-      <span class="edu-tag">C</span>
-      <span class="edu-tag">SQL</span>
-      <span class="edu-tag">Data Structures</span>
-      <span class="edu-tag">Algorithms</span>
-      <span class="edu-tag">Database Design</span>
-      <span class="edu-tag">Network Administration</span>
-      <span class="edu-tag">Software Development</span>
-    </div>
   </div>
 </section>
 
