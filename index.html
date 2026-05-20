@@ -506,35 +506,50 @@
     }
     .demo-gallery {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 0.8rem;
-      min-height: 100%;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-content: start;
     }
     .demo-shot {
-      min-height: 160px;
+      margin: 0;
       border-radius: 10px;
       border: 1px solid rgba(26,26,46,0.08);
-      background:
-        linear-gradient(135deg, rgba(22,33,62,0.94), rgba(230,57,70,0.76)),
-        radial-gradient(circle at 70% 20%, rgba(244,162,97,0.48), transparent 32%);
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: flex-end;
-      padding: 1rem;
-      color: #fff;
+      background: #fbfaf7;
       overflow: hidden;
+      box-shadow: 0 2px 14px rgba(26,26,46,0.06);
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
     }
-    .demo-shot.large { min-height: 100%; }
-    .demo-shot.small { min-height: calc(50% - 0.4rem); }
+    .demo-shot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+    .demo-shot.large {
+      aspect-ratio: 16 / 10;
+    }
+    .demo-shot.small {
+      aspect-ratio: 1 / 1;
+    }
     .demo-stack {
       display: grid;
-      gap: 0.8rem;
+      gap: 1rem;
+    }
+    .demo-shot.diagram-tall {
+      aspect-ratio: 1 / 1;
+    }
+    .demo-shot.diagram-wide {
+      aspect-ratio: 16 / 10;
     }
     .demo-caption {
-      font-size: 0.76rem;
+      padding: 0.75rem 0.85rem;
+      background: #fff;
+      border-top: 1px solid rgba(26,26,46,0.08);
+      font-size: 0.78rem;
       line-height: 1.4;
-      color: rgba(255,255,255,0.78);
+      color: #4b5563;
     }
     .project-details {
       grid-column: 1 / -1;
@@ -676,8 +691,8 @@
       .hero-visual { display: none; }
       .about-grid, .contact-grid, .project-card.featured { grid-template-columns: 1fr; gap: 2rem; }
       .nav-links { gap: 1.2rem; }
-      .demo-gallery { grid-template-columns: 1fr; }
-      .demo-shot.large, .demo-shot.small { min-height: 180px; }
+      .demo-stack { grid-template-columns: 1fr; }
+      .demo-shot.small { aspect-ratio: 16 / 10; }
     }
     @media (prefers-reduced-motion: reduce) {
       .terminal-line,
@@ -850,32 +865,34 @@ Developed features including injury risk visualization, player/team dashboards, 
         <p class="project-summary">An embedded traffic light control system developed using the STM32 Nucleo-L476RG board and a Traffic Light Shield. It simulates realistic vehicle and pedestrian traffic behavior while providing real-time visual feedback through LEDs and an OLED display.</p>
         <div class="project-meta">
           <div><strong>Process</strong><span>The project was implemented in C using STM32CubeIDE together with the STM32 HAL libraries for peripheral configuration and hardware abstraction. SPI communication was used to control cascaded 74HC595 shift registers and the OLED display, GPIO was used for buttons and car detection switches, ADC and PWM were used for potentiometer-based LED brightness control, and finite state machines (FSMs) were implemented to manage pedestrian and vehicle traffic logic. The system was designed in a modular way using separate software layers and custom drivers for traffic control, shift registers, display handling and brightness control.</span></div>
-          <div><strong>Demo Notes</strong><span>Add what the viewer should notice in the photos: sensors, wiring, enclosure, user interaction, measured output, or prototype iteration.</span></div>
+          <div><strong>Demo Focus</strong><span>The prototype demonstrates a complete intersection controller: button-triggered pedestrian crossings, car-detection based traffic changes, LED traffic states, OLED countdown feedback and adjustable LED brightness through a potentiometer.</span></div>
         </div>
         <div class="tech-stack">
-          <span class="tech-chip">Embedded Systems</span>
-          <span class="tech-chip">Sensors</span>
-          <span class="tech-chip">Microcontrollers</span>
-          <span class="tech-chip">Prototyping</span>
+          <span class="tech-chip">STM32 Nucleo</span>
+          <span class="tech-chip">C + HAL</span>
+          <span class="tech-chip">FSM Logic</span>
+          <span class="tech-chip">SPI + PWM</span>
         </div>
       </div>
       <div class="demo-gallery" aria-label="Hardware demo image gallery">
-        <div class="demo-shot large">
+        <figure class="demo-shot large">
           <img src="assets/projects/demo_pic.png" alt="Traffic shield">
-          <p class="demo-caption">Main prototype demo</p>
-        </div>
+          <figcaption class="demo-caption">Main prototype demo</figcaption>
+        </figure>
         <div class="demo-stack">
-          <div class="demo-shot small">
-            <p class="demo-caption">Prototype detail</p>
-          </div>
-          <div class="demo-shot small">
-            <p class="demo-caption">Test setup</p>
-          </div>
+          <figure class="demo-shot small diagram-tall">
+            <img src="assets/projects/diagram1.png" alt="Hardware system diagram">
+            <figcaption class="demo-caption">System diagram</figcaption>
+          </figure>
+          <figure class="demo-shot small diagram-wide">
+            <img src="assets/projects/diagram2.png" alt="Traffic light control flow diagram">
+            <figcaption class="demo-caption">Control flow</figcaption>
+          </figure>
         </div>
       </div>
       <details class="project-details">
-        <summary>More about the hardware build</summary>
-        <p>The implementation combines three tasks where task 1 manages the pedestrian crossing logic where pedestrians can request crossing using push buttons. The system ensures safe operation by coordinating pedestrian and vehicle traffic lights with configurable delays, blinking indicators and proper red–orange–green transitions. Task 2 handles vehicle traffic flow at the road intersection by dynamically switching traffic directions depending on detected cars while preventing conflicting traffic paths. The logic also includes timing constraints such as maximum waiting times and adaptive green light durations. Task 3 extends the system with real-time visualization and brightness control. An SSD1306 OLED display was used to show remaining waiting times as animated bars, while a potentiometer allowed proportional brightness adjustment of all LEDs using PWM. The software architecture was designed using layered abstractions to improve modularity and maintainability. HAL drivers handled low-level peripheral access, while custom modules such as traffic_control.c, traffic_control2.c, traffic_ped.c, shift_register.c, display.c and poti.c implemented higher-level functionality. Traffic behavior was modeled using finite state machines (FSMs), enabling deterministic state transitions and timing management through HAL_GetTick(). Shift registers were controlled through SPI communication to efficiently manage all LED outputs while minimizing GPIO usage. A strong focus was also placed on testing and verification through a Test Driven Development (TDD) approach. Individual subsystems such as shift registers, OLED communication, potentiometer input, pedestrian buttons and car switches were first tested independently before integration into the complete traffic system. This ensured reliable operation, easier debugging and correct hardware-software interaction throughout the development process.</p>
+        <summary>How the traffic controller works</summary>
+        <p>The build combines three connected parts. First, pedestrians can request a crossing with push buttons; the controller then coordinates safe red, orange and green transitions for both pedestrians and vehicles. Second, vehicle flow is handled with car-detection switches, allowing the intersection to adapt green-light timing while preventing conflicting directions from being active at the same time. Third, the demo adds feedback and control: an SSD1306 OLED display shows remaining wait time as animated bars, and a potentiometer adjusts LED brightness using PWM. The software was organized into layered C modules for traffic logic, pedestrian handling, shift-register output, display control and potentiometer input. Finite state machines manage the traffic states and timing through HAL_GetTick(), while SPI-driven 74HC595 shift registers control the LEDs efficiently with fewer GPIO pins. Each subsystem was tested independently before integration, including the shift registers, OLED display, buttons, car switches and brightness control.</p>
       </details>
     </article>
   </div>
