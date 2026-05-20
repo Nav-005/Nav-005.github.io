@@ -506,9 +506,13 @@
     }
     .demo-gallery {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 0.9fr;
       gap: 1rem;
       align-content: start;
+    }
+    .demo-primary-stack {
+      display: grid;
+      gap: 1rem;
     }
     .demo-shot {
       margin: 0;
@@ -528,20 +532,16 @@
       background: #fff;
     }
     .demo-shot.large {
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 16 / 9;
     }
     .demo-shot.small {
-      aspect-ratio: 1 / 1;
-    }
-    .demo-stack {
-      display: grid;
-      gap: 1rem;
+      aspect-ratio: 4 / 3;
     }
     .demo-shot.diagram-tall {
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 4 / 3;
     }
     .demo-shot.diagram-wide {
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 3 / 4;
     }
     .demo-caption {
       padding: 0.75rem 0.85rem;
@@ -691,8 +691,8 @@
       .hero-visual { display: none; }
       .about-grid, .contact-grid, .project-card.featured { grid-template-columns: 1fr; gap: 2rem; }
       .nav-links { gap: 1.2rem; }
-      .demo-stack { grid-template-columns: 1fr; }
-      .demo-shot.small { aspect-ratio: 16 / 10; }
+      .demo-gallery { grid-template-columns: 1fr; }
+      .demo-shot.diagram-wide { aspect-ratio: 16 / 10; }
     }
     @media (prefers-reduced-motion: reduce) {
       .terminal-line,
@@ -875,20 +875,20 @@ Developed features including injury risk visualization, player/team dashboards, 
         </div>
       </div>
       <div class="demo-gallery" aria-label="Hardware demo image gallery">
-        <figure class="demo-shot large">
-          <img src="assets/projects/demo_pic.png" alt="Traffic shield">
-          <figcaption class="demo-caption">Main prototype demo</figcaption>
-        </figure>
-        <div class="demo-stack">
+        <div class="demo-primary-stack">
+          <figure class="demo-shot large">
+            <img src="assets/projects/demo_pic.png" alt="Traffic shield">
+            <figcaption class="demo-caption">Main prototype demo</figcaption>
+          </figure>
           <figure class="demo-shot small diagram-tall">
             <img src="assets/projects/diagram1.png" alt="Hardware system diagram">
             <figcaption class="demo-caption">System diagram</figcaption>
           </figure>
-          <figure class="demo-shot small diagram-wide">
-            <img src="assets/projects/diagram2.png" alt="Traffic light control flow diagram">
-            <figcaption class="demo-caption">Control flow</figcaption>
-          </figure>
         </div>
+        <figure class="demo-shot small diagram-wide">
+          <img src="assets/projects/diagram2.png" alt="Traffic light control flow diagram">
+          <figcaption class="demo-caption">Control flow</figcaption>
+        </figure>
       </div>
       <details class="project-details">
         <summary>How the traffic controller works</summary>
